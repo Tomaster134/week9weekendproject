@@ -10,7 +10,7 @@ interface IProps {
 
 const Item = (props: IProps) => {
   return (
-    <div className='task-container'>{props.task.completed ? <div className='completed'><span>{props.task.id}. </span><span>{props.task.task} </span><span>{props.task.due}</span></div> : <div><span>{props.task.id}. </span><span>{props.task.task} </span><span>{props.task.due}</span></div>}
+    <div className='task-container'>{props.task.completed ? <div className='completed'><div><span>{props.task.id}. </span><span className="task-todo">{props.task.task} </span></div><span>Finish By: <strong>{props.task.due}</strong></span></div> : <div className='in-progress'><div><span>{props.task.id}. </span><span>{props.task.task} </span></div><span>Finish By: <strong>{props.task.due}</strong></span></div>}
     </div>
   )
 }

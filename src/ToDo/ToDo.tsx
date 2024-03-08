@@ -9,9 +9,9 @@ interface ITask {
   completed: boolean;
 }
 
-interface IList {
-  ITask: [];
-}
+// interface IList {
+//   ITask: [];
+// }
 
 const ToDo = () => {
   const [toDo, setToDo] = useState<ITask>({
@@ -30,25 +30,25 @@ const ToDo = () => {
 
   useEffect(() => {
     setList([...list, toDo]);
-    setList(list.filter((task) => (task.id !== 0)))
-    console.log(toDo)
   }, [toDo.id]);
 
-//   useEffect(() => {
-//     setList(list.filter(task => (task.id !== 0)));
-//   }, []);
+  useEffect(() => {
+    setList(list.filter(task => (task.id !== 0)));
+  }, []);
 
   return (
     <>
       <form onSubmit={submitTask} className="input-container">
         <div className="mb-3">
           <label htmlFor="task" className="form-label">
-            Task
+            <strong>Task</strong>
           </label>
           <input
             type="text"
             className="form-control"
             id="task"
+            placeholder="What do you need to do?"
+            required
             value={toDo.task}
             onChange={(event) => {
               setToDo({ ...toDo, task: event.target.value });
@@ -57,7 +57,7 @@ const ToDo = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="due" className="form-label">
-            Due
+            <strong>Due</strong>
           </label>
           <input
             type="date"
@@ -69,9 +69,9 @@ const ToDo = () => {
             }}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
-          Log Task
-        </button>
+        <div className="button-container"><button type="submit" className="btn btn-primary" id='submit-btn'>
+          Do It!
+        </button></div>
       </form>
       {list.map((todo, idx) =>
         todo.id ? (
@@ -94,7 +94,7 @@ const ToDo = () => {
                   )
                 }
               />
-              <label className="form-check-label todo-check-label" htmlFor="flexCheckDefault">
+              <label className="form-check-label todo-check-label">
                 Completed!
               </label>
             </div>
