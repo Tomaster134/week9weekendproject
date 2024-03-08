@@ -1,1 +1,33 @@
-@import 'node_modules/bootstrap/dist/css/bootstrap.min.css'
+.input-container {
+  margin: 30px;
+  padding: 30px;
+  border-radius: 20px;
+  background-image: url(../assets/imgs/notepad.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.todo-check {
+  display: inline;
+  margin-left: 20px;
+}
+
+.todo-check-label {
+}
+
+.todo-check-box {
+  position: relative;
+}
+.todo-container {
+  display: flex;
+  margin: 20px;
+}
+
+.todo-contents {
+}
+
+#check-complete {
+  height: 20px;
+  width: 20px;
+}
