@@ -74,8 +74,8 @@ const ToDo = () => {
         </button></div>
       </form>
       {list.map((todo, idx) =>
-        todo.id ? (
-          <form key={idx} className="todo-container">
+        todo.completed ? (
+          <div className=" accomplished"><form key={idx} className="todo-container">
             <div className="todo-contents">
               <Item task={todo} />
             </div>
@@ -99,7 +99,34 @@ const ToDo = () => {
               </label>
             </div>
           </form>
-        ) : null
+          </div>
+        ) : (
+          <div className="working">
+            <form key={idx} className="todo-container">
+        <div className="todo-contents">
+          <Item task={todo} />
+        </div>
+        <div className="form-check todo-check">
+          <input
+            className="form-check-input todo-check-box"
+            type="checkbox"
+            id="check-complete"
+            onChange={(event) =>
+              setList(
+                list.map((task) =>
+                  task.id == idx+1
+                    ? { ...task, completed: event.target.checked }
+                    : task
+                )
+              )
+            }
+          />
+          <label className="form-check-label todo-check-label">
+            Completed!
+          </label>
+        </div>
+      </form>
+      </div>)
       )}
       {console.log(list)}
     </>
